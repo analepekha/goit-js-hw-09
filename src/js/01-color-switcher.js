@@ -1,28 +1,30 @@
-const btnStart = document.querySelector('button[data-start]');
-const btnStop = document.querySelector('button[data-stop]');
-const body = document.querySelector('body');
+const refs = {
+btnStart: document.querySelector('button[data-start]'),
+btnStop: document.querySelector('button[data-stop]'),
+body: document.querySelector('body')
+}
 
-btnStop.setAttribute('disabled', 'disabled')
+refs.btnStop.setAttribute('disabled', 'disabled')
 
-btnStart.addEventListener('click', onStartClick)
+refs.btnStart.addEventListener('click', onStartClick)
 
 function onStartClick() {
-    btnStart.setAttribute("disabled", "disabled");
-    btnStop.removeAttribute('disabled');
+    refs.btnStart.setAttribute("disabled", "disabled");
+    refs.btnStop.removeAttribute('disabled');
 
-    if (btnStart.hasAttribute('disabled')) {
-    btnStop.removeAttribute('disabled'); 
+    if (refs.btnStart.hasAttribute('disabled')) {
+    refs.btnStop.removeAttribute('disabled'); 
 }
     timerId = setInterval(() => {
-         body.style.backgroundColor = getRandomHexColor()
+         refs.body.style.backgroundColor = getRandomHexColor()
     },1000)
 }
 
-btnStop.addEventListener('click', onStopClick)
+refs.btnStop.addEventListener('click', onStopClick)
 
 function onStopClick() {
-    btnStop.setAttribute('disabled', 'disabled'); 
-    btnStart.removeAttribute('disabled');
+    refs.btnStop.setAttribute('disabled', 'disabled'); 
+    refs.btnStart.removeAttribute('disabled');
     clearInterval(timerId)
 }
 
